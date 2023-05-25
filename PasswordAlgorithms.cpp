@@ -21,3 +21,25 @@ void deleteElementsByCategory(std::vector<pss::Password> &passwordsArr, std::str
     }
 }
 
+std::string generatePasswordForDocument(std::string fileName)
+{
+    std::string genPassword = "";
+    int tempIndex = 0;
+
+    for (size_t i = 0; i < fileName.size(); i++)
+        if (fileName[i] == '/' || fileName[i] == '\\')
+            tempIndex = i + 1;
+            
+    genPassword += fileName[tempIndex];
+    for (size_t i = tempIndex + 2; i < fileName.size(); i++)
+    {
+        if (fileName[i] == '.' || fileName[i - 1] == '.')
+            break;
+
+        genPassword += fileName[i];
+        i++;
+    }
+
+    return genPassword;
+}
+
