@@ -43,3 +43,13 @@ std::string generatePasswordForDocument(std::string fileName)
     return genPassword;
 }
 
+int findByCategory(std::vector<pss::Password>& passwordsArr, std::string category)
+{
+    if (passwordsArr.empty())
+        throw std::exception("No passwords to find.");
+    for (int i = 0; i < passwordsArr.size(); i++)
+        if (passwordsArr[i].getCategory() == category)
+            return i;
+    throw std::exception("Element wasn`t found.");
+}
+

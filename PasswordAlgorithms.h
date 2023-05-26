@@ -9,3 +9,5 @@ void deleteElementsByCategory(std::vector<pss::Password> &passwordsArr, std::str
 
 std::string generatePasswordForDocument(std::string FileName);
 
+int findByCategory(std::vector<pss::Password>& passwordsArr, std::string category);
+

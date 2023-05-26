@@ -6,6 +6,7 @@
 #include <algorithm>
 #include "PasswordClass.h"
 #include "PasswordAlgorithms.h"
+#include "Cipher.h"
 
 
 int main()
@@ -16,12 +17,13 @@ int main()
 
 	std::vector<pss::Password> passwordsArr;
 	std::string fileName;
+	std::string ofFileName;
 
 	getline(std::cin, fileName);
 
 	std::ifstream passwordFile(fileName);
 	std::ofstream cryptedFile;
-
+	
 	if (passwordFile)
 	{
 		std::string encryptPassword = generatePasswordForDocument(fileName);
@@ -36,9 +38,10 @@ int main()
 			while (getline(passwordFile, line))
 			{ 
 				passwordsArr.push_back(line);
+				cryptData += CryptString(line);
 			}
 				
-
+			
 			passwordsArr[0].setCategory("Web");
 			passwordsArr[2].setCategory("Web");
 			passwordsArr[1].setCategory("currency");
@@ -65,6 +68,16 @@ int main()
 			deleteElementsByCategory(passwordsArr, "Web");
 			for (auto i : passwordsArr)
 				std::cout << i << std::endl;
+			
+			std::cout << "Type name for file which will be crypted with these passwords." << std::endl;
+
+			getline(std::cin, ofFileName);
+
+			cryptedFile.open(ofFileName);
+			if (cryptedFile.is_open())
+			{
+				cryptedFile << cryptData;
+			}
 		}
 
 		else

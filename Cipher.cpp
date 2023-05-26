@@ -51,5 +51,5 @@ std::string CryptString(std::string text)
 
 		
 	}
-	return std::string();
+	return cryptedData;
 }
