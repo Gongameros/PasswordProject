@@ -1,6 +1,6 @@
 #include "PasswordAlgorithms.h"
 
-bool compareByNameAndCategory (pss::Password& item1, pss::Password& item2) 
+bool compareByNameAndCategory(pss::Password& item1, pss::Password& item2)
 {
     if (item1.getCompanyName() == item2.getCompanyName()) {
         return item1.getCategory() < item2.getCategory();
@@ -8,12 +8,12 @@ bool compareByNameAndCategory (pss::Password& item1, pss::Password& item2)
     return item1.getCompanyName() < item2.getCompanyName();
 }
 
-void deleteElementsByCategory(std::vector<pss::Password> &passwordsArr, std::string category)
+void deleteElementsByCategory(std::vector<pss::Password>& passwordsArr, std::string category)
 {
     for (size_t i = 0; i < passwordsArr.size(); i++)
     {
         if (category == passwordsArr[i].getCategory())
-        { 
+        {
             passwordsArr.erase(passwordsArr.begin() + i);
             i--;
         }
@@ -29,7 +29,7 @@ std::string generatePasswordForDocument(std::string fileName)
     for (size_t i = 0; i < fileName.size(); i++)
         if (fileName[i] == '/' || fileName[i] == '\\')
             tempIndex = i + 1;
-            
+
     genPassword += fileName[tempIndex];
     for (size_t i = tempIndex + 2; i < fileName.size(); i++)
     {

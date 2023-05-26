@@ -5,7 +5,7 @@
 #include <string>
 
 namespace pss
-{ 
+{
 	class Password
 	{
 	private:
@@ -33,7 +33,7 @@ namespace pss
 
 		std::string getCategory();
 
-		friend std::ostream& operator << (std::ostream& os, const Password &password)
+		friend std::ostream& operator << (std::ostream& os, const Password& password)
 		{
 			os << "Login: " << password.login << std::endl;
 			os << "Password: " << password.password << std::endl;

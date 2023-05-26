@@ -23,7 +23,7 @@ int main()
 
 	std::ifstream passwordFile(fileName);
 	std::ofstream cryptedFile;
-	
+
 	if (passwordFile)
 	{
 		std::string encryptPassword = generatePasswordForDocument(fileName);
@@ -31,17 +31,17 @@ int main()
 		std::string cryptData = "";
 
 		std::cout << "Type password to open the file." << std::endl;
-		std::cin >> encryptPasswordByUser;
-		if(encryptPassword == encryptPasswordByUser)
-		{ 
+		getline(std::cin,encryptPasswordByUser);
+		if (encryptPassword == encryptPasswordByUser)
+		{
 			std::string line;
 			while (getline(passwordFile, line))
-			{ 
+			{
 				passwordsArr.push_back(line);
 				cryptData += CryptString(line);
 			}
-				
-			
+
+
 			passwordsArr[0].setCategory("Web");
 			passwordsArr[2].setCategory("Web");
 			passwordsArr[1].setCategory("currency");
@@ -52,7 +52,7 @@ int main()
 
 			std::cout << std::endl;
 
-			std::cout << "Before sorting" << std::endl<<std::endl;
+			std::cout << "Before sorting" << std::endl << std::endl;
 			for (auto i : passwordsArr)
 				std::cout << i << std::endl;
 
@@ -68,7 +68,7 @@ int main()
 			deleteElementsByCategory(passwordsArr, "Web");
 			for (auto i : passwordsArr)
 				std::cout << i << std::endl;
-			
+
 			std::cout << "Type name for file which will be crypted with these passwords." << std::endl;
 
 			getline(std::cin, ofFileName);
@@ -90,7 +90,7 @@ int main()
 		std::cout << "Wrong name of file or absolute path.";
 
 
-	
+
 
 	passwordFile.close();
 
