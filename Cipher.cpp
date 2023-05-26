@@ -50,6 +50,8 @@ std::string CryptString(std::string text)
 		}
 
 
+
+
 	}
 	cryptedData += '\n';
 	return cryptedData;
@@ -58,5 +60,9 @@ std::string CryptString(std::string text)
 std::string UncryptString(std::string text)
 {
 	std::string UncryptedData = "";
-	return std::string();
+	for (size_t i = 0; i < text.size(); i++)
+	{
+		
+	}
+	return UncryptedData;
 }
